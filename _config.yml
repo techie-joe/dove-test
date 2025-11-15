@@ -1,0 +1,61 @@
+remote_theme: techie-joe/dove
+# the location of the remote_theme.
+
+# add jekyll-remote-theme to the plugins list.
+plugins:
+- jekyll-remote-theme
+# - jekyll-paginate
+# - jekyll-sitemap
+
+version: '0.0.2'
+
+title: Dove Test
+description: Dove test site.
+# title: # the title of your site (best without the punctuation dot).
+# description: # a short description of your site's purpose.
+
+# google_analytics: # your Google Analytics tracking ID.
+# to track your website using Google Analytics.
+
+# cloudflare_analytics: # your Cloudflare Analytics tracking ID.
+# to track your website using Cloudflare Analytics.
+
+# show_downloads: # true or false (unquoted).
+# indicate whether to provide a download URL.
+
+# github:
+#   zip_url: http://example.com/download.zip
+#   another_url: another_value
+
+# theme
+theme_color: '#222'
+color_scheme: light dark
+ghost: bG9jYWxob3N0LHRlY2hpZS1qb2UuZ2l0aHViLmlv
+
+sass:
+  style: compressed
+
+# exclude these files from Jekyll production site (_site).
+exclude:
+- ".editorconfig"
+- ".github"
+- ".gitignore"
+- ".sass-cache"
+- ".jekyll-cache"
+- ".jekyll-metadata"
+- "*.gem"
+- "*.gemspec"
+- Gemfile
+- Gemfile.lock
+- ".bundle"
+- vendor
+- script
+- node_modules
+- package-lock.json
+- package.json
+- gulpfile.js
+- CNAME
+- "*.x"
+- "*.ignore"
+- "*.backup"
+- "*.localhost"
