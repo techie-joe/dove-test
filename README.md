@@ -1,2 +1,1 @@
-# dove-test
-Dove test site.
+# Dove Test
