@@ -8,6 +8,7 @@ plugins:
 # - jekyll-sitemap
 
 version: '0.0.2'
+revision: '2511.01'
 
 title: Dove Test
 description: Dove test site.

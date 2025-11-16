@@ -1,5 +1,5 @@
 ---
 title: Home
 ---
-{% include_relative README.md %}
-{% include pages.md %}
+# {{site.title}}
+- [techie-joe.github.io]('techie-joe.github.io')
