@@ -20,7 +20,7 @@ use_footer: false
 
 | [My Code Library][library] |  
 | [Ace][ace] - [Mallet][mallet] - [Sites][sites] - [Dove][dove] - [Dzikr][dzikr] |  
-{: id="featured_projects" class="borderless" }
+{: #featured_projects.borderless }
 <style>#featured_projects{margin:1rem 0}</style>
 
 [library]: https://techie-joe.github.io/library/ "Techie Joe's Library"
