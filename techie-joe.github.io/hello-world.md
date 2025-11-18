@@ -1,7 +1,17 @@
-# Hello World
-> A Web Developer’s Journey into the Digital Frontier
+---
+title: Hello World
+description: A Web Developer’s Journey into the Digital Frontier
+use_nav: false
+use_footer: false
+---
+
+# {{ page.title }}
+
+> {{ page.description }}
 
 For most, "Hello World" is just a phrase—simple, unassuming, and perhaps mundane. But for a web developer, these two words symbolize a rite of passage. The moment they appear on a screen, it’s as though a portal to infinite possibilities has swung open, welcoming the creator into a world where ideas come alive in code.
+
+---
 
 The first "Hello World" is a spark, a tiny ember of creation. It’s the culmination of hours spent configuring text editors, battling syntax errors, and staring at blank screens that beg to be filled with logic and creativity. It’s a shout into the void, saying, “Here I am, ready to build.”
 
@@ -14,3 +24,7 @@ For the web developer, "Hello World" isn’t just an introduction to coding—it
 But "Hello World" is also a reminder of humility. It says, “This is where I start, but not where I finish.” From that first declaration, the developer embarks on a journey of endless learning. Frameworks change, languages evolve, and trends shift, but the spirit of that first message remains unshaken—a simple, confident greeting to the boundless universe of the web.
 
 So, the next time you stumble upon "Hello World" while tinkering with code, know this: you’re witnessing the beginning of something extraordinary. A web developer is saying hello to creation, innovation, and transformation. It’s a moment worth celebrating because behind those two little words lies the beating heart of progress.
+
+---
+
+{% include_relative footer.md %}
