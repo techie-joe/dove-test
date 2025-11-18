@@ -7,14 +7,12 @@ use_footer: false
 #_hero-title { margin-left:1.6em;text-indent:-1.7em }
 </style>
 
-{% include_relative README.md %}
+<h1 id="_hero-title">👔 Techie Joe's Website</h1>
 
----
+**Welcome to my digital workspace**, this is where I share my latest work and experiments.  
 
-**Welcome to my digital workspace**, this is where I share my latest work, projects, and ongoing experiments.  
-
-| [My Code Library][library] |
-| [Ace][ace] - [Mallet][mallet] - [Sites][sites] - [Dove][dove] - [Dzikr][dzikr] |
+| [My Code Library][library] |  
+| [Ace][ace] - [Mallet][mallet] - [Sites][sites] - [Dove][dove] - [Dzikr][dzikr] |  
 {: id="featured_projects" class="borderless" }
 <style>#featured_projects{margin-bottom:3rem}</style>
 
@@ -25,7 +23,7 @@ use_footer: false
 [dove]:    https://techie-joe.github.io/sites/ "Dove - theme development project."
 [dzikr]:   https://github.com/techie-joe/dzikr/ "Techie Joe's Dzikr Wordpress Plugin"
 
-[Read more ..](hello-world)
+Read the ["Hello World"](hello-world) article.
 
 ---
 
