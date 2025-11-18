@@ -1,4 +1,10 @@
-**Techie Joe's** &bull; [Website][website] &bull; [Profile][profile] &bull; [Wiki][wiki] &bull; [Gists][gist] &bull; [Discussions][discuss] &bull; [Sponsorship][sponsor]
+**Techie Joe's**
+&bull; [Website][website]
+&bull; [Profile][profile]{: target="_github" }
+&bull; [Wiki][wiki]{: target="_github" }
+&bull; [Gists][gist]{: target="_github" }
+&bull; [Discussions][discuss]{: target="_github" }
+&bull; [Sponsorship][sponsor]{: target="_github" }
 
 [website]: https://techie-joe.github.io "Techie Joe's Website"
 [profile]: https://github.com/techie-joe "Techie Joe's GitHub Profile"
