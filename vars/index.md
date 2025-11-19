@@ -24,8 +24,8 @@ site.description   : {{ site.description }}
 
 ###### assign
 
-{% assign nick = 'nik' | append: 'ahmad' %}
-{% assign layout.zee = 'zakwan' %}
+{% assign nick = 'nik' %}
+{% assign layout.who = 'nik' | append: 'ahmad' %}
 {% assign page.title = 'New Title' %}
 ```yml
 undefined  : {{ undefined | default: '(undefined)' }}
@@ -33,5 +33,6 @@ undefined  : {{ undefined | default: '(undefined)' }}
 {{ 'hello' | capitalize }}
 
 nick       : {{ nick }}
-layout.zee : {{ nick }}
+layout.who : {{ layout.who }}
+page.title : {{ page.title }}
 ```
