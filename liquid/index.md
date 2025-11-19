@@ -23,16 +23,16 @@ Comment block should not appear in the rendered Markdown.
 
 ###### raw
 
-{% raw %}assign: {% assign x = 'x' %}{%- endraw %}
+{% raw %}
+assign: {% assign x = 'x' %}
+{%- endraw %}
 
 {% assign product = {
   title: 'Product Title',
   description: 'Product description.',
   }
 %}
-
 {% raw %}product.title : {{ product.title | default: 'undefined' }}{%- endraw %}
-
 {% raw %}
 product.description : {{ product.description | default: 'undefined' }}
 {%- endraw %}
