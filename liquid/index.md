@@ -23,7 +23,9 @@ Comment block should not appear in the rendered Markdown.
 
 ###### raw
 
-<!-- Be carefull when closing the `raw` tag. -->
+Be carefull when closing the `raw` tag.  
+Closing with `{%- endraw %}` cause build error.  
+Use `{% endraw %}` instead.  
 
 {% raw %}
 assign: {% assign x = 'x' %}
@@ -38,6 +40,13 @@ assign: {% assign x = 'x' %}
 {% raw %}
 product.description : {{ product.description | default: 'undefined' }}
 {% endraw %}
+
+###### echo
+
+Github Pages did not support the `echo` tag at the moment. 
+
+{% raw %}{% echo 'echo' %}{% endraw %}
+
 
 ###### capture
 
@@ -85,8 +94,6 @@ Github Pages did not support the `render` tag at the moment.
 ###### controls
 
 ```
-{% echo 'echo' %}
-
 {% assign condition = 'yes' %}
 {% if condition %}
 if.condition :{{ condition }}
