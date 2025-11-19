@@ -16,6 +16,10 @@ There’s a comment block below this line.
 
 Comment block should not appear in the rendered Markdown.
 
+###### raw
+
+{% raw %}{% raw %}... {% endraw %}{%- endraw %}
+
 ###### capture
 
 {% capture block %}
@@ -24,9 +28,31 @@ Comment block should not appear in the rendered Markdown.
 
 {{ block }}
 
-###### raw
+###### snippet
 
-{% raw %}{% raw %}... {% endraw %}{%- endraw %}
+{% render 'snippet', 
+  card_title: "Coffee Maker", 
+  card_description: "Brews perfect coffee every time." 
+%}
+
+###### filters
+
+{% assign my_name = "jAmEs pEtErSoN" %}
+{% assign today = '2025-11-19T10:30:00' %}
+{% assign list = "apple,banana,cherry" %}
+
+<p>Uppercase Name: {{ my_name | upcase }}</p>
+<p>Date Format: {{ today | date: "%B %d, %Y" }}</p>
+<p>List Size: {{ list | split: "," | size }}</p>
+<p>Chained Filters: {{ my_name | downcase | replace: "james", "robert" }}</p>
+
+###### jsonify
+
+```js
+{{ { 'key' :  'value' } | jsonify }}
+{{ [ 'key' => 'value' ] | jsonify }}
+{{ { ['array', 1, 2 ] } | jsonify }}
+```
 
 ###### controls
 
@@ -55,8 +81,8 @@ else.condition_3 :{{ condition_3 }}
 
 {% assign condition_5 = 'when' %}
 {% case condition_5 %}
-case.condition_5 :
-{%- when 'when' %}{{ condition_5 }}
+case :
+{%- when 'when' %}condition_5 : {{ condition_5 }}
 {%- endcase %}
 ```
 
@@ -64,9 +90,9 @@ case.condition_5 :
 
 ```
 {% assign collection = [3,4,6,7] %}
-{% for item in collection %}{{ item }},{%- endfor %}
+{% for item in collection limit:5 %}{{ item }},{%- endfor %}
 
-{% for item in collection %}
+{% for item in collection limit:5 %}
 - {{ item }}
 {%- endfor %}
 
