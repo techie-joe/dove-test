@@ -23,4 +23,4 @@ use_footer: false
 ---
 {: .mt-6 }
 
-**Proto's** &bull; [Repository](https://github.com/techie-joe/proto){: target="_blank" }
+**Proto's** &bull; [Repository](https://github.com/techie-joe/proto)
