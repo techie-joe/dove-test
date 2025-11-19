@@ -41,6 +41,8 @@ Comment block should not appear in the rendered Markdown.
 {% assign today = '2025-11-19T10:30:00' %}
 {% assign list = "apple,banana,cherry" %}
 
+<p>Default: {{ default | default: '(default)' }}</p>
+<p>Capitalize: {{ 'capitalize' | capitalize }}</p>
 <p>Uppercase Name: {{ my_name | upcase }}</p>
 <p>Date Format: {{ today | date: "%B %d, %Y" }}</p>
 <p>List Size: {{ list | split: "," | size }}</p>

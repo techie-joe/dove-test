@@ -28,10 +28,6 @@ site.description   : {{ site.description }}
 {% assign layout.who = 'nik' | append: 'ahmad' %}
 {% assign page.title = 'New Title' %}
 ```yml
-undefined  : {{ undefined | default: '(undefined)' }}
-
-{{ 'hello' | capitalize }}
-
 nick       : {{ nick }}
 layout.who : {{ layout.who }}
 page.title : {{ page.title }}
