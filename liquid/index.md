@@ -6,6 +6,53 @@ use_footer: false
 ---
 # {{ page.title }}
 
+###### assign
+
+`todo: assigning values`
+
+###### jsonify
+
+{% assign object = '{ "key": "value" }' | parse_json %}
+{% assign values = '[ "key" => "value" ]' | parse_json %}
+{% assign arrays = '[ "array", 1, 2 ]' | parse_json %}
+{% assign products = '[
+  {"name": "Laptop", "price": 1200.00, "in_stock": true},
+  {"name": "Mouse", "price": 25.50, "in_stock": true},
+  {"name": "Keyboard", "price": 80.00, "in_stock": false}
+]' | parse_json %}
+
+```yml
+object: {{ object | jsonify }}
+------------------------------
+values: {{ values | jsonify }}
+------------------------------
+arrays: {{ arrays | jsonify }}
+------------------------------
+products: {{ products | jsonify }}
+```
+
+###### loop
+
+{% assign collection_a = [1,2,3,4,5,6,7,8,9] %}
+{% assign collection_b = '1,2,3,4,5,6,7,8,9' %}
+{% assign collection_c = '[1,2,3,4,5,6,7,8,9]' | parse_json %}
+
+```
+collection_a: {{ collection_a | jsonify }}
+{% for item in collection_a limit:5 %}{{ item }},
+{%- endfor %}
+
+collection_b: {{ collection_b | split: ',' | jsonify }}
+{% for item in collection_b limit:5 %}{{ item }},
+{%- endfor %}
+
+collection_c: {{ collection_c | jsonify }}
+{% for item in collection_c limit:5 %}{{ item }},
+{%- endfor %}
+
+# there is also break and continue.
+```
+
 ###### comments
 
 There’s a comment block below this line.
@@ -63,9 +110,9 @@ split       : {{ list | split: "," | size }} (array size)
 {%- endif %}
 
 {% assign condition_4 = 'unique' %}condition_4 : {{ condition_4 }}
-{% unless condition_4 == 'unique' %}unless.condition_4 : unique
-{%- endunless %}
 {% unless condition_4 == 'x_unique' %}unless.condition_4 : x_unique
+{%- endunless %}
+{% unless condition_4 == 'unique' %}unless.condition_4 : unique
 {%- endunless %}
 
 {% assign condition_5 = 'when-b' %}condition_5 : {{ condition_5 }}
@@ -74,49 +121,6 @@ case.condition_5 :
 {%- when 'when-a' %}is A
 {%- when 'when-b' %}is B
 {%- endcase %}
-```
-
-###### jsonify
-
-{% assign object = '{ "key": "value" }' | parse_json %}
-{% assign values = '[ "key" => "value" ]' | parse_json %}
-{% assign arrays = '[ "array", 1, 2 ]' | parse_json %}
-{% assign products = '[
-  {"name": "Laptop", "price": 1200.00, "in_stock": true},
-  {"name": "Mouse", "price": 25.50, "in_stock": true},
-  {"name": "Keyboard", "price": 80.00, "in_stock": false}
-]' | parse_json %}
-
-```yml
-object: {{ object | jsonify }}
-------------------------------
-values: {{ values | jsonify }}
-------------------------------
-arrays: {{ arrays | jsonify }}
-------------------------------
-products: {{ products | jsonify }}
-```
-
-###### loop
-
-{% assign collection_a = [1,2,3,4,5,6,7,8,9] %}
-{% assign collection_b = '1,2,3,4,5,6,7,8,9' %}
-{% assign collection_c = '[1,2,3,4,5,6,7,8,9]' | parse_json %}
-
-```
-collection_a: {{ collection_a | jsonify }}
-{% for item in collection_a limit:5 %}{{ item }},
-{%- endfor %}
-
-collection_b: {{ collection_b | split: ',' | jsonify }}
-{% for item in collection_b limit:5 %}{{ item }},
-{%- endfor %}
-
-collection_c: {{ collection_c | jsonify }}
-{% for item in collection_c limit:5 %}{{ item }},
-{%- endfor %}
-
-# there is also break and continue.
 ```
 
 ###### raw
