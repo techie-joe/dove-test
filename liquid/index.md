@@ -12,7 +12,7 @@ There’s a comment block below this line.
 
 <!-- This HTML comment will not appear in the rendered Markdown -->
 
-{% comment %}This Liquid comment will not appear in the rendered Markdown{% endcomment %}
+{% comment %}This Liquid comment will not appear in the rendered Markdown{%- endcomment %}
 {% comment %}
 Another comment
 in multiple
@@ -23,10 +23,18 @@ Comment block should not appear in the rendered Markdown.
 
 ###### raw
 
-{% raw %}product.title : {{ product.title }}{% endraw %}
+{% raw %}assign: {% assign x = 'x' %}{%- endraw %}
+
+{% assign product = {
+  title: 'Product Title',
+  description: 'Product description.',
+  }
+%}
+
+{% raw %}product.title : {{ product.title | default: 'undefined' }}{%- endraw %}
 
 {% raw %}
-product.title : {{ product.title }}
+product.description : {{ product.description | default: 'undefined' }}
 {%- endraw %}
 
 ###### capture
@@ -46,7 +54,7 @@ Github Pages did not support the `raw` tag at the moment.
   card_title: "Coffee Maker", 
   card_description: "Brews perfect coffee every time." 
 %}
-{% endraw %}
+{%- endraw %}
 
 ###### filters
 
