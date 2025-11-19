@@ -8,14 +8,18 @@ use_footer: false
 
 ###### Horizontal rules
 
----
+`hr-html`
 
 <hr class="hr-html"/>
+
+`hr-one`
+
+{: .hr-one }
+
+`hr-two`
 
 ---
 {: .hr-two }
 
----
-
 ends
-{: .text-grey style="font-size:.8rem" }
+{: .text-grey.small }

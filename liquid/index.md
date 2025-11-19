@@ -27,21 +27,15 @@ Be carefull when closing the `raw` tag.
 Closing with `%-` cause build error.  
 
 ```liquid
-{% raw %}
-assign: {% assign x = 'x' %}
-{% endraw %}
+{% raw %} assign: {% assign x = 'x' %} {% endraw %}
 
 {% assign product = {
     title: 'Product Title',
     description: 'Product description.',
   }
 %}
-{% raw %}
-product.title : {{ product.title | default: 'undefined' }}
-{% endraw %}
-{% raw %}
-product.description : {{ product.description | default: 'undefined' }}
-{% endraw %}
+{% raw %} product.title : {{ product.title | default: 'undefined' }} {% endraw %}
+{% raw %} product.description : {{ product.description | default: 'undefined' }} {% endraw %}
 ```
 
 ###### echo
@@ -49,29 +43,30 @@ product.description : {{ product.description | default: 'undefined' }}
 Github Pages did not support the `echo` tag at the moment.
 
 ```
-{% raw %}
-{% echo 'echo' %}
-{% endraw %}
+{% raw %} {% echo 'echo' %} {% endraw %}
 ```
-
-###### capture
-
-{% capture block %}
-> **captured block**{: .text-purple }
-{%- endcapture %}
-
-{{ block }}
 
 ###### render
 
 Github Pages did not support the `render` tag at the moment. 
 
+```
 {% raw %}
 {% render 'snippet', 
   card_title: "Coffee Maker", 
   card_description: "Brews perfect coffee every time." 
 %}
 {% endraw %}
+```
+
+###### capture
+
+{% capture block %}
+**captured block**{: .text-purple }
+{%- endcapture %}
+
+{{ block }}
+{: .box.ba.text-center }
 
 ###### filters
 
@@ -79,22 +74,25 @@ Github Pages did not support the `render` tag at the moment.
 {% assign today = '2025-11-19T10:30:00' %}
 {% assign list = "apple,banana,cherry" %}
 
-<p>Default: {{ default | default: '(default)' }}</p>
-<p>Capitalize: {{ 'capitalize' | capitalize }}</p>
-<p>Uppercase Name: {{ my_name | upcase }}</p>
-<p>Date Format: {{ today | date: "%B %d, %Y" }}</p>
-<p>List Size: {{ list | split: "," | size }}</p>
-<p>Chained Filters: {{ my_name | downcase | replace: "james", "robert" }}</p>
+```
+Default         : {{ default | default: '(default)' }}
+Capitalize      : {{ 'capitalize' | capitalize }}
+Uppercase Name  : {{ my_name | upcase }}
+Date Format     : {{ today | date: "%B %d, %Y" }}
+List Size       : {{ list | split: "," | size }}
+Chained Filters : {{ my_name | downcase | replace: "james", "robert" }}
+```
 
 ###### jsonify
 
-```js
 {% assign object = {'key': 'value'} %}
 {% assign values = [ 'key' => 'value' ] %}
 {% assign arrays = ['array', 1, 2 ] %}
-{{ object | jsonify }}
-{{ values | jsonify }}
-{{ arrays | jsonify }}
+
+```yml
+object: {{ object | jsonify }}
+values: {{ values | jsonify }}
+arrays: {{ arrays | jsonify }}
 ```
 
 ###### controls
@@ -120,10 +118,11 @@ else.condition_3 :{{ condition_3 }}
 {% assign condition_4 = 'unique' %}
 {% unless condition_4 == 'unique' %}condition_4 :{{ condition_4 }}{%- endunless %}
 
-{% assign condition_5 = 'when' %}
+{% assign condition_5 = 'when-b' %}
 {% case condition_5 %}
 case :
-{%- when 'when' %}condition_5 : {{ condition_5 }}
+{%- when 'when-a' %}condition_5 : {{ condition_5 }}
+{%- when 'when-b' %}condition_5 : {{ condition_5 }}
 {%- endcase %}
 ```
 
@@ -131,10 +130,10 @@ case :
 
 ```
 {% assign collection = [3,4,6,7] %}
-{% for item in collection limit:5 %}{{ item }},{%- endfor %}
+{% for item in collection %}item: {{ item }},{%- endfor %}
 
 {% for item in collection limit:5 %}
-- {{ item }}
+- item: {{ item }}
 {%- endfor %}
 
 # there is also break and continue.
