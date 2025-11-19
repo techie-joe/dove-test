@@ -8,7 +8,7 @@ use_footer: false
 #_hero-title { margin-left:1.6em;text-indent:-1.7em }
 </style>
 
-<div style="margin-top:3rem"></div>
+<div style="margin-top:6rem"></div>
 
 <h1 id="_hero-title">👔 Techie Joe's Website</h1>
 
@@ -34,7 +34,8 @@ use_footer: false
 
 Read the "[Hello World](hello-world)" article.
 
+<div style="margin-top:3rem"></div>
+
 ---
-{: .mt-6 }
 
 {% include_relative footer.md %}
