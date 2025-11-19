@@ -12,10 +12,10 @@ use_footer: false
 
 ###### Testing
 
-- [Markdown](md)
 - [Variables](vars)
-- [Dove themes](https://techie-joe.github.io/dove)
+- [Markdown](md)
 - [techie-joe.github.io](techie-joe.github.io)
+- [Dove themes](https://techie-joe.github.io/dove)
 
 ---
 {: .mt-6 }
