@@ -14,6 +14,8 @@ use_footer: false
 
 `hr-too`
 
----{: .hr-too }
+---
+{: .hr-too }
 
-ends{: .text-grey.small }
+ends
+{: .text-grey.small }
