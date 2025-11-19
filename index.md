@@ -12,7 +12,10 @@ use_footer: false
 
 ###### Testing
 
+- [Pages](pages)
+- [Posts](posts)
 - [Variables](vars)
+- [Liquid](liquid)
 - [Markdown](md)
 - [techie-joe.github.io](techie-joe.github.io)
 - [Dove themes](https://techie-joe.github.io/dove)
