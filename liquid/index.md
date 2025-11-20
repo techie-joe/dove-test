@@ -8,7 +8,33 @@ use_footer: false
 
 ###### assign
 
-`todo: assigning values`
+`{% raw %}{% assign var = value_or_expression %}{% endraw %}`
+{% assign string  = "jAmEs pEtErSoN" %}
+{% assign date    = "2025-11-19T10:30:00" %}
+{% assign list    = "apple,banana,cherry" %}
+{% assign color   = "red" %}{% assign color   = "blue" %}
+{% assign object  = {pen} %}{% assign color   = "blue" %}
+
+```yml
+var     : {{ var | default: '(value_or_expression)' }}
+string  : {{ string }}
+date    : {{ date }}
+list    : {{ list }}
+color   : {{ color }}
+```
+
+###### filters
+
+```yml
+default     : {{ undefined | default: '(default)' }}
+upcase      : {{ string | upcase }}
+downcase    : {{ string | downcase }}
+capitalize  : {{ string | capitalize }}
+replace     : {{ string | capitalize | replace: "peterson", "Rodney" }}
+date        : {{ date | date: "%B %d, %Y" }}
+size        : {{ list | size }} (string length)
+split       : {{ list | split: "," | size }} (array size)
+```
 
 ###### jsonify
 
@@ -53,6 +79,29 @@ collection_c: {{ collection_c | jsonify }}
 # there is also break and continue.
 ```
 
+###### controls
+
+```
+{% if true %}if{%- endif %}
+{% if false %}{%- elsif true %}elsif{%- endif %}
+{% if false %}{%- else %}else{%- endif %}
+{% unless false %}unless{%- endunless %}
+{% case 'a' -%}
+case:
+{%- when 'when-a' %}is A
+{%- when 'when-b' %}is B
+{%- endcase %}
+```
+
+###### capture
+
+{% capture block %}
+**captured block**{: .text-purple }
+{%- endcapture %}
+
+{{ block }}
+{: .box.ba.text-center }
+
 ###### comments
 
 There’s a comment block below this line.
@@ -68,76 +117,20 @@ lines
 
 Comment block should not appear in the rendered Markdown.
 
-###### capture
-
-{% capture block %}
-**captured block**{: .text-purple }
-{%- endcapture %}
-
-{{ block }}
-{: .box.ba.text-center }
-
-###### filters
-
-{% assign my_name = "jAmEs pEtErSoN" %}
-{% assign today = '2025-11-19T10:30:00' %}
-{% assign list = "apple,banana,cherry" %}
-
-```
-default     : {{ default | default: '(default)' }}
-upcase      : {{ my_name | upcase }}
-downcase    : {{ my_name | downcase }}
-capitalize  : {{ my_name | capitalize }}
-replace     : {{ my_name | capitalize | replace: "peterson", "Rodney" }}
-date        : {{ today | date: "%B %d, %Y" }}
-size        : {{ list | size }} (string length)
-split       : {{ list | split: "," | size }} (array size)
-```
-
-###### controls
-
-```
-{% assign condition = true %}condition : {{ condition }}
-{% if condition %}if.condition : true
-{%- endif %}
-
-{% assign condition_2 = true %}condition_2 : {{ condition_2 }}
-{% if condition_ %}{%- elsif condition_2 %}elsif.condition_2 : true
-{%- endif %}
-
-{% assign condition_3 = true %}condition_3 : {{ condition_3 }}
-{% if condition_ %}{%- else %}else.condition_3 : true
-{%- endif %}
-
-{% assign condition_4 = 'unique' %}condition_4 : {{ condition_4 }}
-{% unless condition_4 == 'x_unique' %}unless.condition_4 : x_unique
-{%- endunless %}
-{% unless condition_4 == 'unique' %}unless.condition_4 : unique
-{%- endunless %}
-
-{% assign condition_5 = 'when-b' %}condition_5 : {{ condition_5 }}
-{% case condition_5 %}
-case.condition_5 :
-{%- when 'when-a' %}is A
-{%- when 'when-b' %}is B
-{%- endcase %}
-```
-
 ###### raw
 
-`raw` skips liquid rendering. 
-Be carefull when closing the `raw` tag. 
-Closing with `%-` cause build error.  
+`raw` skips liquid rendering.
+Be carefull using it. Closing with `%-` cause build error.  
 
 ```liquid
-{% raw %}{% assign x = 'x' %}
-product.title : {{ product.title | default: 'undefined' }}
-product.description : {{ product.description | default: 'undefined' }}{% endraw %}
+{% raw %}{% assign x = 'x' %}{% endraw %}
+{% raw %}product.title : {{ product.title }}
+product.description : {{ product.description }}{% endraw %}
 ```
 
 ###### echo
 
-Github Pages did not support the `echo` tag at the moment.
+Github Pages did not support `echo` at the moment.
 
 ```
 {% raw %}{% echo 'echo' %}{% endraw %}
@@ -145,7 +138,7 @@ Github Pages did not support the `echo` tag at the moment.
 
 ###### render
 
-Github Pages did not support the `render` tag at the moment. 
+Github Pages did not support `render` at the moment. 
 
 ```
 {% raw %}{% render 'snippet', 
