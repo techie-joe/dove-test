@@ -1,10 +1,9 @@
 ---
 title: Home
+use_header: false
 use_nav: false
 use_footer: false
 ---
-<style>._logo{display:none !important}</style>
-
 {% include_relative README.md %}
 
 ---
