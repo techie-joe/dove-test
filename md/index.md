@@ -15,5 +15,5 @@ description: Miscellaneous markdown syntaxes.
 ---
 {: .hr-too }
 
-ends
+end-of-hr
 {: .text-grey.small }
