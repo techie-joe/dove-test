@@ -68,13 +68,15 @@ order    : {{ list_a | first }}{{' ... '}}{{ list_a | last }}
 ```
 
 {% assign join_list_a = list_a | join: ',' %}
-{% assign add_list_a  = 'pear,' | append: join_list_a | append: ',durian' %}
-{% assign new_list_a  = add_list_a | split: ',' %}
-{% assign list_a = new_list_a %}
+{% assign new_list_a  = 'pear,' | append: join_list_a | append: ',durian' %}
+{% assign list_a = new_list_a | split: ',' %}
 
 ```yml
-list_a   : {%  | append: list_a | append: "durian" %}{{' > '}}{{ list_aa }}
-list_aa.jsonify : {{ list_aa | jsonify }}
+new_list_a : {{ new_list_a }}
+list_a   : {{ list_a }} [{{ list_a | size | append: ' items' }}]
+jsonify  : {{ list_a | jsonify }}
+join     : {{ list_a | join: ',' }}
+order    : {{ list_a | first }}{{' ... '}}{{ list_a | last }}
 ```
 
 {% assign list_b   = '["pen","gum","tin"]' | parse_json %}
