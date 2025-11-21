@@ -5,12 +5,12 @@ use_footer: false
 ---
 <style>
 ._logo { display:none !important }
-#_hero-title { margin-left:1.6em;text-indent:-1.7em }
+._hero-title { margin-left:1.6em;text-indent:-1.7em }
 </style>
 
 <div style="margin-top:6rem"></div>
 
-<h1 id="_hero-title">👔 Techie Joe's Website</h1>
+<h1 id="_hero-title" class="._hero-title">👔 Techie Joe's Website</h1>
 
 **Welcome to my digital workspace**, this is where I share my work and experiments.  
 
@@ -35,7 +35,5 @@ use_footer: false
 Read the "[Hello World](hello-world)" article.
 
 <div style="margin-top:3rem"></div>
-
----
 
 {% include_relative footer.md %}

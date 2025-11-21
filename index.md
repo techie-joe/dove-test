@@ -2,7 +2,7 @@
 title: Home
 use_header: false
 use_nav: false
-use_footer: false
+use_footer: true
 ---
 {% include_relative README.md %}
 
@@ -31,4 +31,4 @@ use_footer: false
 &bull; [Variables](vars)
 {%- endcapture %}
 
-<hr/>{{ footer }}
+<footer class="_footer"><hr/>{{ footer }}</footer>

@@ -33,7 +33,4 @@ For the global community of developers who understand it, ***"Hello World"*** is
 So, when I type ***"Hello World"*** .. know this: I'm not testing something. I'm initiating creation, driving innovation, and transforming the digital landscape. It's my launch sequence, and behind those **two perfect little words** is the core logic of everything I build.
 {: .indent.text-justify }
 
----
-{: .mt-6 }
-
 {% include_relative footer.md %}
