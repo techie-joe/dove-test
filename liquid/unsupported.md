@@ -36,5 +36,6 @@ Github Pages does not support `render` at the moment.
 ```
 
 ---
+{: .mt-6 }
 
 {% include_relative _nav.md %}

@@ -144,5 +144,6 @@ lines too
 Comment block will not appear in the rendered Markdown.
 
 ---
+{: .mt-6 }
 
 {% include_relative _nav.md %}

@@ -13,8 +13,7 @@ page.layout        : {{ page.layout }}
 ```
 
 ```yml
-# layout
-{{ layout | jsonify }}
+layout: {{ layout | jsonify }}
 ```
 
 ```yml

@@ -64,5 +64,6 @@ products.laptop : {{ products.laptop | jsonify }}
 ```
 
 ---
+{: .mt-6 }
 
 {% include_relative _nav.md %}
