@@ -121,9 +121,13 @@ else in for : {% for i in undefined -%} not working {%- else -%} works {%- endfo
 
 > Use {% raw %}`{% break %}` and `{% continue %}` to get out of a loop.{% endraw %}
 
+###### markdownify
+
+{{ '> apply ***markdown filter***' | markdownify }}
+
 ###### capture
 
-{% capture block %}
+{% capture block -%}
 **captured block**{: .text-purple }
 {%- endcapture %}
 

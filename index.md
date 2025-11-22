@@ -22,13 +22,3 @@ use_footer: true
 
 &nbsp;
 {: .mt-0 }
-
-{% capture proto_footer %}
-**Proto's**
-&bull; [Repository](https://github.com/techie-joe/proto)
-&bull; [Pages](pages)
-&bull; [Posts](posts)
-&bull; [Variables](vars)
-{%- endcapture %}
-
-<footer class="_footer"><hr/>{{ proto_footer }}</footer>

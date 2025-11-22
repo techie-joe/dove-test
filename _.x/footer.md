@@ -1,4 +1,4 @@
-{% capture footer %}
+{% capture footer -%}
 **Proto's**
 &bull; [Repository](https://github.com/techie-joe/proto)
 &bull; [Pages](pages)
