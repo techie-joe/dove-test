@@ -2,7 +2,6 @@
 title: Home
 use_header: false
 use_nav: false
-use_footer: true
 ---
 {% include_relative README.md %}
 
@@ -12,8 +11,9 @@ use_footer: true
 ###### Testing
 
 - [techie-joe.github.io](techie-joe.github.io)
-- [Markdown](md)
 - [Liquid](liquid)
+- [Markdown](md)
+- [404](404)
 
 ###### Projects
 

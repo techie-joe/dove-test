@@ -17,4 +17,4 @@
 
 ---
 
-<footer class="_footer"><hr/>{{ footer }}</footer>
+<footer class="_footer"><hr/>{{ footer | markdownify }}</footer>

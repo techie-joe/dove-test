@@ -1,6 +1,7 @@
 ---
 title: Markdown
 description: Miscellaneous markdown syntaxes.
+user_nav: false
 ---
 # {{ page.title }}
 
