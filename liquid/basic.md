@@ -169,7 +169,7 @@ Use `{% else %}` to handle empty arrays.{% endraw %}
 Use `markdownify` to transform markdown to HTML, before using it inside an HTML block.'
 {%- endcapture %}
 
-<small>{{ note_md | markdownify }}</small>
+<blockquote class="small">{{ note_md | markdownify }}</blockquote>
 
 ###### comments
 
