@@ -21,20 +21,20 @@ nil     : {{ nil | default: '(nil is false and renders nothing)' }}
 
 ###### strings
 
-{%- assign string   = 'jAmEs r pEtErSoN.' %}
+{%- assign string   = 'jAmEs  r  pEtErSoN .' %}
 
 ```yml
 string        : {{ string }} [{{ string | size | append: ' characters' }}]
 
-# remove: 'r' and '.'
-{%- assign string = string | remove: 'r' | remove: '.' | split: ' ' | join: ' ' -%}
+# replace: ' r ' | remove: '.'
+{%- assign string = string | replace: ' r ', ' ' | remove: '.' | split: ' ' | join: ' ' %}
 string        : {{ string }} [{{ string | size | append: ' characters' }}]
 upcase        : {{ string | upcase }}
 downcase      : {{ string | downcase }}
 capitalize    : {{ string | capitalize }}
 
 # replace: 'peterson' | prepend: 'Mr. ' | append: ' (age 42)'
-{%- assign string = string | downcase | replace: "peterson", "Rodney" | prepend: 'Mr. ' | append: ' (age 42)' -%}
+{%- assign string = string | downcase | replace: "peterson", "Rodney" | prepend: 'Mr. ' | append: ' (age 42)' %}
 string        : {{ string }} [{{ string | size | append: ' characters' }}]
 truncate      : {{ string | truncate: 15 }}
 ```
@@ -68,15 +68,21 @@ date : {{ date | date: "%A, %B %d, %Y @ %I:%M:%S %p" }}
 ###### controls
 
 ```liquid
-if true : {% if true -%} then {%- endif %}
-elsif true : {% if false -%}  {%- elsif true -%} then {%- endif %}
-else : {% if false -%}  {%- else -%} otherwise {%- endif %}
+if true : {% if true -%} when true {%- endif %}
+elsif true : {% if false -%}  {%- elsif true -%} when true {%- endif %}
+else : {% if false -%} when false {%- else -%} otherwise {%- endif %}
 
-unless true  : {% unless true  -%} otherwise {%- else -%} then {%- endunless %}
-unless false : {% unless false -%} otherwise {%- else -%} then {%- endunless %}
+unless true  : {% unless true  -%} when not true {%- else -%} when true {%- endunless %}
+unless false : {% unless false -%} when not false {%- else -%} when false {%- endunless %}
 
 case 'a' : {% case 'a' -%}
 {%- when 'a' -%} when 'a'
+{%- else -%} otherwise 
+{%- endcase %}
+
+case 'b' : {% case 'b' -%}
+{%- when 'a' -%} when 'a'
+{%- else -%} otherwise 
 {%- endcase %}
 
 # Check a blank string with the `blank` object.
@@ -96,9 +102,9 @@ numbers  : {{ numbers | jsonify }} [{{ numbers | size | append: ' items' }}]
 
 > Will these work ?
 
-{%- assign arrays  = [ "pen", 0.9, true ] | parse_json -%}
-{%- assign values  = [ "key" => "value" ] | parse_json -%}
-{%- assign objects = { "key" :  "value" } | parse_json -%}
+{%- assign arrays  = [ "pen", 0.9, true ] | parse_json %}
+{%- assign values  = [ "key" => "value" ] | parse_json %}
+{%- assign objects = { "key" :  "value" } | parse_json %}
 
 ```yml
 arrays   : {{ arrays  | jsonify }} [{{ arrays  | size | append: ' items' }}]
@@ -108,9 +114,9 @@ objects  : {{ objects | jsonify }} [{{ objects | size | append: ' items' }}]
 
 > These won't work
 
-{%- assign arrays  = '[ "pen", 0.9, true ]' | parse_json -%}
-{%- assign values  = '[ "key" => "value" ]' | parse_json -%}
-{%- assign objects = '{ "key" :  "value" }' | parse_json -%}
+{%- assign arrays  = '[ "pen", 0.9, true ]' | parse_json %}
+{%- assign values  = '[ "key" => "value" ]' | parse_json %}
+{%- assign objects = '{ "key" :  "value" }' | parse_json %}
 
 ```yml
 arrays   : {{ arrays  | jsonify }} [{{ arrays  | size | append: ' items' }}]
@@ -128,14 +134,14 @@ objects  : {{ objects | jsonify }} [{{ objects | size | append: ' items' }}]
 
 ```
 {% for i in numbers limit:_limit -%} [{{ i }}, {% cycle 'odd', 'even' %}] {% endfor %}
-for else : {% for i in undefined -%} is not working {%- else -%} works {%- endfor %}
 ```
 
-{% raw %}Use `{% break %}` and `{% continue %}` to get out of a loop.{% endraw %}
+{% raw %}Use `{% break %}` and `{% continue %}` to get out of a loop. 
+Use `{% else %}` in loop to handle empty arrays.{% endraw %}
 
 ###### markdownify
 
-{{ '***markdownify*** transform markdown syntax into HTML.' | markdownify }}
+{{ '`markdownify` transform markdown syntax into HTML.' | markdownify }}
 
 ###### capture
 
@@ -166,8 +172,8 @@ Comment block will not appear in the rendered Markdown.
 Using **white-space modifier** `-` with it will cause build error.  
 
 ```liquid
-{% raw %}product.title : {{ product.title }}{% endraw %}
-{% raw %}# works in both inline and multiple-lines
+{% raw %}# works in both inline and multiple-lines{% endraw %}
+{% raw %}product.title : {{ product.title }}
 {%- assign x = 'x' %}
 {% comment %}comment{% endcomment %}{% endraw %}
 ```

@@ -49,8 +49,10 @@ list_a   : {{ list_a | jsonify }} [{{ list_a | size | append: ' items' }}]
 ```yml
 list_b   : {{ list_b }} [{{ list_b | size | append: ' items' }}]
 jsonify  : {{ list_b | jsonify }}
+```
 
-{{'# '}}{% for item in list_b %}[{{ item }}]{{' '}}{%- endfor %}
+```js
+{% for item in list_b %}[{{ item }}]{{' '}}{%- endfor %}
 ```
 
 {%- assign products = '[
@@ -62,8 +64,10 @@ jsonify  : {{ list_b | jsonify }}
 ```yml
 products : {{ products | jsonify }} [{{ products | size | append: ' items' }}]
 products.laptop : {{ products.laptop | jsonify }}
+```
 
-{{'# '}}{% for item in products %}[{{ item }}],{%- endfor %}
+```js
+{% for item in products %}[{{ item }}],{%- endfor %}
 ```
 
 ---
