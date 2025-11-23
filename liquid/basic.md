@@ -132,11 +132,7 @@ objects  : {{ objects | jsonify }} [{{ objects | size | append: ' items' }}]
 ```
 
 {% raw %}Use `{% break %}` and `{% continue %}` to get out of a loop. 
-Use `{% else %}` in loop to handle empty arrays.{% endraw %}
-
-###### markdownify
-
-{{ '`markdownify` transform markdown syntax into HTML.' | markdownify }}
+Use `{% else %}` to handle empty arrays.{% endraw %}
 
 ###### capture
 
@@ -146,6 +142,12 @@ Use `{% else %}` in loop to handle empty arrays.{% endraw %}
 
 {{ block }}
 {: .box.ba.text-center }
+
+{% capture note_md -%}
+Use `markdownify` to transform markdown to HTML, before using it inside an HTML block.'
+{%- endcapture %}
+
+<small>{{ note_md | markdownify }}</small>
 
 ###### comments
 
