@@ -3,7 +3,7 @@ title: Liquid basics
 description: Basic Liquid syntaxes.
 ---
 {% capture nav_liquid %}{% include_relative nav_liquid.md %}{% endcapture %}
-<nav class="._nav">{{ nav_liquid | markdownify }}</nav>
+<nav>{{ nav_liquid | markdownify }}<hr/></nav>
 
 # {{ page.title }}
 
