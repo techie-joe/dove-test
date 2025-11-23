@@ -6,7 +6,11 @@ permalink: posts
 
 # {{ page.title }}
 
+{% if site.posts.size > 0 -%}
 {{ page.description }}
+{%- else -%}
+_(Nothing has been posted)_
+{%- endif %}
 
 {% include posts.md %}
 

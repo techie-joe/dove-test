@@ -7,7 +7,7 @@ description: Basic Liquid syntaxes.
 ###### assign values
 
 ```liquid
-{% raw %}{% assign var = value_or_expression | filter: 'filter_expression' %}{% endraw %}
+{% raw %}{%- assign var = value_or_expression | filter: 'filter_expression' %}{% endraw %}
 ```
 
 ```yml
@@ -16,38 +16,29 @@ default : {{ undefined | default: '(undefined)' }}
 nil     : {{ nil | default: '(nil is false and renders nothing)' }}
 ```
 
-###### number
-
-{% assign number = 0 %}
-
-```yml
-increment: {% increment number %}{{ number }}
-decrement: {% decrement number %}{{ number }}
-```
-
 ###### strings
 
-{% assign string   = 'jAmEs r pEtErSoN' %}
-{% assign color    = 'blue' %}
+{%- assign string   = 'jAmEs r pEtErSoN.' -%}
 
 ```yml
+string        : {{ string }} [{{ string | size | append: ' characters' }}]
+
+# remove: 'r' and '.'
+{%- assign string = string | remove: 'r' | remove: '.' | split: ' ' | join: ' ' -%}
 string        : {{ string }} [{{ string | size | append: ' characters' }}]
 upcase        : {{ string | upcase }}
 downcase      : {{ string | downcase }}
 capitalize    : {{ string | capitalize }}
-replace       : {{ string | capitalize | replace: "peterson", "Rodney" }}
-truncate      : {{ string | truncate: 7 }}
-# remove 'r'  : {{ string | remove: 'r' }}
-# remove 'r ' : {{ string | remove: 'r ' }}
-prepend       : {{ string | prepend: 'Mr.' }}
-append        : {{ string | append: '(Senior)' }}
 
-color : {{ color }}{{' > '}}{% assign color = "green" %}{{ color }}
+# replace: 'peterson' | prepend: 'Mr. ' | append: ' (age 42)'
+{%- assign string = string | downcase | replace: "peterson", "Rodney" | prepend: 'Mr. ' | append: ' (age 42)' -%}
+string        : {{ string }} [{{ string | size | append: ' characters' }}]
+truncate      : {{ string | truncate: 15 }}
 ```
 
 ###### date
 
-{% assign date     = '2005-03-09T20:10:30' %}
+{%- assign date     = '2005-03-09T20:10:30' -%}
 
 ```yml
 date : {{ date }}
@@ -76,13 +67,13 @@ date : {{ date | date: "%A, %B %d, %Y @ %I:%M:%S %p" }}
 ```liquid
 if true : {% if true -%} then {%- endif %}
 elsif true : {% if false -%}  {%- elsif true -%} then {%- endif %}
-else : {% if false -%}  {%- else -%} means (others) {%- endif %}
+else : {% if false -%}  {%- else -%} otherwise {%- endif %}
 
-unless true  : {% unless true  -%} then (not true)  {%- else -%} : else : it is true  {%- endunless %}
-unless false : {% unless false -%} then (not false) {%- else -%} : else : it is false {%- endunless %}
+unless true  : {% unless true  -%} otherwise {%- else -%} then {%- endunless %}
+unless false : {% unless false -%} otherwise {%- else -%} then {%- endunless %}
 
 case 'a' : {% case 'a' -%}
-{%- when 'a' -%}is A
+{%- when 'a' -%} when 'a'
 {%- endcase %}
 
 # Check a blank string with the `blank` object.
@@ -94,13 +85,31 @@ case 'a' : {% case 'a' -%}
 
 ###### arrays
 
-{% assign numbers = (1..9) %}
-{% assign arrays  = '[ "pen", 0.9, true ]' | parse_json | jsonify %}
-{% assign values  = '[ "key" => "value" ]' | parse_json | jsonify %}
-{% assign objects = '{ "key" :  "value" }' | parse_json | jsonify %}
+{%- assign numbers = (1..9) -%}
 
 ```yml
 numbers  : {{ numbers | jsonify }} [{{ numbers | size | append: ' items' }}]
+```
+
+> Will these work ?
+
+{%- assign arrays  = [ "pen", 0.9, true ] | parse_json -%}
+{%- assign values  = [ "key" => "value" ] | parse_json -%}
+{%- assign objects = { "key" :  "value" } | parse_json -%}
+
+```yml
+arrays   : {{ arrays  | jsonify }} [{{ arrays  | size | append: ' items' }}]
+values   : {{ values  | jsonify }} [{{ values  | size | append: ' items' }}]
+objects  : {{ objects | jsonify }} [{{ objects | size | append: ' items' }}]
+```
+
+> These won't work
+
+{%- assign arrays  = '[ "pen", 0.9, true ]' | parse_json -%}
+{%- assign values  = '[ "key" => "value" ]' | parse_json -%}
+{%- assign objects = '{ "key" :  "value" }' | parse_json -%}
+
+```yml
 arrays   : {{ arrays  | jsonify }} [{{ arrays  | size | append: ' items' }}]
 values   : {{ values  | jsonify }} [{{ values  | size | append: ' items' }}]
 objects  : {{ objects | jsonify }} [{{ objects | size | append: ' items' }}]
@@ -108,22 +117,22 @@ objects  : {{ objects | jsonify }} [{{ objects | size | append: ' items' }}]
 
 ###### loops
 
-{% assign _limit = 5 %}
+{%- assign _limit = 5 -%}
 
 {% comment %}
 {% for i in numbers limit:_limit %}{{ i }} {% cycle 'odd', 'even' %}, {% endfor %}
 {% endcomment %}
 
 ```
-{% for i in numbers limit:_limit %}{{ i }} {% cycle 'odd', 'even' %}, {% endfor %}
-else in for : {% for i in undefined -%} not working {%- else -%} works {%- endfor %}
+{% for i in numbers limit:_limit -%} [{{ i }}, {% cycle 'odd', 'even' %}] {% endfor %}
+for else : {% for i in undefined -%} is not working {%- else -%} works {%- endfor %}
 ```
 
-> Use {% raw %}`{% break %}` and `{% continue %}` to get out of a loop.{% endraw %}
+{% raw %}Use `{% break %}` and `{% continue %}` to get out of a loop.{% endraw %}
 
 ###### markdownify
 
-{{ '> apply ***markdown filter***' | markdownify }}
+{{ '***markdownify*** transform markdown syntax into HTML.' | markdownify }}
 
 ###### capture
 
@@ -148,7 +157,19 @@ lines too
 
 Comment block will not appear in the rendered Markdown.
 
+###### raw
+
+`raw` skips liquid rendering. 
+Using **white-space modifier** `-` with it will cause build error.  
+
+```liquid
+{% raw %}product.title : {{ product.title }}{% endraw %}
+{% raw %}# works in both inline and multiple-lines
+{%- assign x = 'x' %}
+{% comment %}comment{% endcomment %}{% endraw %}
+```
+
 ---
 {: .mt-6 }
 
-{% include_relative _nav.md %}
+{% include_relative nav_liquid.md %}

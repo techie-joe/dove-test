@@ -4,18 +4,6 @@ description: Unsupported Liquid syntaxes on this site.
 ---
 # {{ page.title }}
 
-###### raw
-
-`raw` skips liquid rendering.
-Be carefull using it. Closing with `%-` cause build error.  
-
-```liquid
-{% raw %}{% assign x = 'x' %}{% endraw %}
-{% raw %}{% comment %}comment{% endcomment %}
-product.title : {{ product.title }}
-product.description : {{ product.description }}{% endraw %}
-```
-
 ###### echo
 
 Github Pages does not support `echo` at the moment.
@@ -38,4 +26,4 @@ Github Pages does not support `render` at the moment.
 ---
 {: .mt-6 }
 
-{% include_relative _nav.md %}
+{% include_relative nav_liquid.md %}

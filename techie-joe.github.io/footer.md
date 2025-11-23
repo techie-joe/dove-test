@@ -1,4 +1,4 @@
-{% capture footer %}
+{% capture footer -%}
 **Techie Joe's**
 &bull; [Website][website]
 &bull; [Profile][profile]{: target="_github" }
@@ -13,8 +13,6 @@
 [gist]:    https://gist.github.com/techie-joe "Techie Joe's Gists"
 [discuss]: https://github.com/techie-joe/techie-joe/discussions "💬 Techie Joe's Discussions"
 [sponsor]: https://github.com/sponsors/techie-joe "☕️ Buy me coffee .."
-{% endcapture %}
-
----
+{%- endcapture %}
 
 <footer class="_footer"><hr/>{{ footer | markdownify }}</footer>

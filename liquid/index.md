@@ -4,4 +4,4 @@ description: Liquid syntaxes on this site.
 ---
 # {{ page.title }}
 
-{% include_relative _nav.md %}
+{% include_relative nav_liquid.md %}

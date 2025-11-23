@@ -4,10 +4,10 @@ description: Handling list using Liquid.
 ---
 # {{ page.title }}
 
-{% assign list_x = 'a,m,b,n,c,o,z,y,x' | split: ',' %}
+{%- assign list_x = 'a,m,b,n,c,o,z,y,x' | split: ',' %}
 
 ```liquid
-{% raw %}{% assign list_x = 'a,m,b,n,c,o,z,y,x' | split: ',' %}{% endraw %}
+{% raw %}{%- assign list_x = 'a,m,b,n,c,o,z,y,x' | split: ',' %}{% endraw %}
 ```
 
 ```yml
@@ -21,27 +21,27 @@ reverse  : {{ list_x | reverse | jsonify }}
 slice    : {{ list_x | sort | slice: 3, 3 | jsonify }}
 ```
 
-{% assign list_a = 'apple,banana,cherry' | split: ',' %}
+{%- assign list_a = 'apple,banana,cherry' | split: ',' %}
 
 ```liquid
-{% raw %}{% assign list_a = 'apple,banana,cherry' | split: ',' %}{% endraw %}
+{% raw %}{%- assign list_a = 'apple,banana,cherry' | split: ',' %}{% endraw %}
 ```
 
 ```yml
 list_a   : {{ list_a | jsonify }} [{{ list_a | size | append: ' items' }}]
 ```
 
-{% assign list_a = list_a | join: ',' | prepend: 'pear,' | append: ',durian' | split: ',' %}
+{%- assign list_a = list_a | join: ',' | prepend: 'pear,' | append: ',durian' | split: ',' %}
 
 ```liquid
-{% raw %}{% assign list_a = list_a | join: ',' | prepend: 'pear,' | append: ',durian' | split: ',' %}{% endraw %}
+{% raw %}{%- assign list_a = list_a | join: ',' | prepend: 'pear,' | append: ',durian' | split: ',' %}{% endraw %}
 ```
 
 ```yml
 list_a   : {{ list_a | jsonify }} [{{ list_a | size | append: ' items' }}]
 ```
 
-{% assign list_b   = '["pen","gum","tin"]' | parse_json | jsonify %}
+{%- assign list_b   = '["pen","gum","tin"]' | parse_json | jsonify %}
 
 ```yml
 list_b   : {{ list_b }} [{{ list_b | size | append: ' items' }}]
@@ -50,7 +50,7 @@ jsonify  : {{ list_b | jsonify }}
 {{'# '}}{% for item in list_b %}[{{ item }}]{{' '}}{%- endfor %}
 ```
 
-{% assign products = '[
+{%- assign products = '[
   "laptop"   => {"name": "Ace",  "price": 1200.00, "in_stock": true},
   "mouse"    => {"name": "Mice", "price": 25.50,   "in_stock": true},
   "keyboard" => {"name": "Keys", "price": 80.90,   "in_stock": false}
@@ -66,4 +66,4 @@ products.laptop : {{ products.laptop | jsonify }}
 ---
 {: .mt-6 }
 
-{% include_relative _nav.md %}
+{% include_relative nav_liquid.md %}

@@ -1,7 +1,6 @@
 ---
 title: Variables
 description: Variables on this site.
-use_nav: false
 use_footer: false
 ---
 # {{ page.title }}
