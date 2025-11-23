@@ -27,3 +27,5 @@ description  : {{ site.description | default: '(undefined)' }}
 
 &nbsp;
 {: .mt-0 }
+
+{% include footer.md %}
