@@ -122,10 +122,10 @@ Use `{% else %}` to handle empty arrays.{% endraw %}
 {: .box.ba.text-center }
 
 {% capture note_md -%}
-Use `markdownify` to transform markdown to HTML, before using it inside an HTML block.'
+Use `markdownify` to transform markdown to HTML, before using it inside an HTML block.
 {%- endcapture %}
 
-<blockquote class="small">{{ note_md | markdownify }}</blockquote>
+<div class="small">{{ note_md | markdownify }}</div>
 
 ###### comments
 

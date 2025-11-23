@@ -51,7 +51,9 @@ values   : {{ values  | jsonify }} [{{ values  | size | append: ' items' }}]
 objects  : {{ objects | jsonify }} [{{ objects | size | append: ' items' }}]
 ```
 
-> {% if arrays == empty -%} It won't .. {%- else -%} It works! {%- endif %}
+{%- assign is_working = arrays | jsonify | size %}
+
+> {% if is_working == 0 -%} It fails! {%- else -%} It works! {%- endif %}
 
 ###### echo
 
