@@ -44,32 +44,6 @@ list_a   : {{ list_a | jsonify }} [{{ list_a | size | append: ' items' }}]
 list_a   : {{ list_a | jsonify }} [{{ list_a | size | append: ' items' }}]
 ```
 
-{%- assign list_b   = '["pen","gum","tin"]' | parse_json %}
-
-```yml
-list_b   : {{ list_b }} [{{ list_b | size | append: ' items' }}]
-jsonify  : {{ list_b | jsonify }}
-```
-
-```js
-{% for item in list_b %}[{{ item }}]{{' '}}{%- endfor %}
-```
-
-{%- assign products = '[
-  "laptop"   => {"name": "Ace",  "price": 1200.00, "in_stock": true},
-  "mouse"    => {"name": "Mice", "price": 25.50,   "in_stock": true},
-  "keyboard" => {"name": "Keys", "price": 80.90,   "in_stock": false}
-]' | parse_json %}
-
-```yml
-products : {{ products | jsonify }} [{{ products | size | append: ' items' }}]
-products.laptop : {{ products.laptop | jsonify }}
-```
-
-```js
-{% for item in products %}[{{ item }}],{%- endfor %}
-```
-
 ---
 {: .mt-6 }
 

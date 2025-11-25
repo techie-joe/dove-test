@@ -114,9 +114,7 @@ Use `{% else %}` to handle empty arrays.{% endraw %}
 
 ###### capture
 
-{% capture block -%}
-**captured block**{: .text-purple }
-{%- endcapture %}
+{% capture block -%} **captured block** {%- endcapture %}
 
 {{ block }}
 {: .box.ba.text-center }
@@ -125,7 +123,7 @@ Use `{% else %}` to handle empty arrays.{% endraw %}
 Use `markdownify` to transform markdown to HTML, before using it inside an HTML block.
 {%- endcapture %}
 
-<div class="small">{{ note_md | markdownify }}</div>
+<div class="box ba text-center">{{ note_md | markdownify }}</div>
 
 ###### comments
 
